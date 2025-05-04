@@ -6,9 +6,7 @@ This README provides common commands and instructions for setting up and managin
 ## 🚀 Start All Services
 
 ```
-Builds and starts all containers fresh
-
-docker-compose up --build
+docker-compose up --build           # Builds and starts all containers fresh
 ```
 
 ## 🛑 Stop All Services (Cleanly)
