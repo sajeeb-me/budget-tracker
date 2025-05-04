@@ -26,3 +26,12 @@ COPY --from=builder /app/package.json ./package.json
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
+
+# Stage 4: development image
+FROM node:18-alpine AS dev
+WORKDIR /app
+ENV NODE_ENV=development
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
