@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mongo:
     image: mongo:6
-    restart: always
+    restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: qwerty
@@ -13,7 +13,6 @@ services:
   
   mongo-express:
     image: mongo-express
-    restart: always
     depends_on:
       - mongo
     ports:
@@ -35,7 +34,7 @@ services:
       - MONGO_URI=mongodb://admin:qwerty@mongo:27017/budget-tracker?authSource=admin
     volumes:
       - ./backend:/app
-    restart: always
+    restart: unless-stopped
 
   frontend:
     build:
